@@ -1,0 +1,33 @@
+{
+  "name": "microcosm",
+  "version": "3.0.0",
+  "description": "microcosm: Create, build and deploy your own simple and responsive microsite.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yethon/microcosm.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "yethon",
+  "license": "MIT",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.6.0",
+    "browser-sync": "^2.18.13",
+    "del": "^3.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-babel": "^7.0.0",
+    "gulp-clean-css": "^3.8.0",
+    "gulp-concat": "^2.6.1",
+    "gulp-concat-css": "^2.3.0",
+    "gulp-eslint": "^4.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-sass": "^3.1.0",
+    "gulp-uglify": "^3.0.0",
+    "pump": "^1.0.2",
+    "require-dir": "^0.3.2",
+    "run-sequence": "^2.1.0"
+  }
+}
