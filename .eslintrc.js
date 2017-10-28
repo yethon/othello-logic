@@ -23,6 +23,7 @@ module.exports = {
     ],
     'eqeqeq': 2,
     'no-caller': 2,
+    'no-console':0,
     'block-spacing': 2,
     'comma-dangle': [
       2,

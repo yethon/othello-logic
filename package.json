@@ -29,5 +29,8 @@
     "pump": "^1.0.2",
     "require-dir": "^0.3.2",
     "run-sequence": "^2.1.0"
+  },
+  "dependencies": {
+    "gulp-sourcemaps": "^2.6.1"
   }
 }
