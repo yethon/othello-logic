@@ -31,7 +31,7 @@ $( document ).ready(function() {
 
     const Game = {
       init: function () {
-        var t_row, r, c, cellInitialized;
+        let t_row, r, c, cellInitialized;
         this.board = [];
 
         //setup initial board state
@@ -74,12 +74,11 @@ $( document ).ready(function() {
         return this;
       },
       drawBoard: function () {
-        var t_row, t_col, r, c, cellId,
-          currPlayer = this.currentPlayer === PLAYER_RED ? 'red' : 'blue';
+        let r, c, cellId;
+        const currPlayer = this.currentPlayer === PLAYER_RED ? 'red' : 'blue';
 
         //draw all pieces on the board
         for (r = 0; r < MAX_ROWS; r += 1) {
-          t_row = this.board[r];
           for (c = 0; c < MAX_COLS; c += 1) {
             cellId = '#' + Util.cellIdForRowAndCol(r, c);
             $(cellId).empty()
@@ -119,7 +118,7 @@ $( document ).ready(function() {
     window.Othello = Game;
   })(window)
 
-  Othello.init().drawBoard();
+  window.Othello.init().drawBoard();
 
 
 });
