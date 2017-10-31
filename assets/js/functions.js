@@ -103,14 +103,10 @@ $( document ).ready(function() {
 
       /******************** TODO: Fix Me! ********************/
 
+      // TODO: Refactor.
       shouldCheckDirection (row, column, value) {
         if (this.isOnBoard(row, column)) {
-
           const checkValue = this.board[row][column];
-
-          console.log(checkValue);
-          console.log(value);
-          console.log(`check direction : ${checkValue !== value && checkValue !== 0}`)
 
           return checkValue !== value && checkValue !== 0;
 
@@ -134,7 +130,6 @@ $( document ).ready(function() {
       },
 
       didOutflankOpponent (row, column) {
-        // console.warn(`fuck ${this.board[row][column] === this.currentPlayer}`);
         return this.board[row][column] === this.currentPlayer;
       },
 
@@ -150,20 +145,19 @@ $( document ).ready(function() {
         let cells = [];
         let validChoice = false;
 
-        const DIRECTION = {
-          up: [ - 1 , 0],
-          down: [ 1 , 0],
-          right: [ 0 , 1],
-          left: [ 0 , -1],
-          A: [1,1],
-          B: [1, -1],
-          C: [-1, 1],
-          D: [-1, -1]
-        };
+        const DIRECTION =[
+          [ -1, 0],
+          [ 1, 0],
+          [ 0, 1],
+          [ 0, -1],
+          [1, 1],
+          [1, -1],
+          [-1,1],
+          [-1, -1]
+        ];
 
-        for (const [x, y] of Object.values(DIRECTION)) {
-
-          console.warn(`Direction ::: ${x}, ${y}`);
+        DIRECTION.forEach(([x, y]) => {
+          // TODO: Refactor
 
           let i = x;
           let j = y;
@@ -186,209 +180,12 @@ $( document ).ready(function() {
                 break;
               }
 
-              console.warn(`you did not outflank`);
-
               i = i + x;
               j = j + y;
             }
 
           }
-
-
-
-        }
-
-        // // DOWN
-
-        // // if (Current cell is empty && the next cell is Opponent
-        // if (this.emptyCell(row, column) && this.opponentCell(row + i, column)) {
-
-        // // while (Cell in direction r+1 is NOT empty && is opponent && is on the board))
-
-        // while (!this.emptyCell(row + i, column) &&
-        // this.isOnBoard(row + i, column)) {
-
-        // cells.push([row + i, column])
-
-        // if (this.didOutflankOpponent(row + i, column)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-
-        // console.warn(`you did not outflank`);
-
-        // i++;
-        // }
-
-        // i = 1;
-        // }
-
-        // // UP
-        // if (this.emptyCell(row, column) && this.opponentCell(row - i, column)) {
-
-        // // while (Cell in direction r+1 is NOT empty && is opponent && is on the board))
-
-        // while (!this.emptyCell(row - i, column) &&
-        // this.isOnBoard(row - i, column)) {
-
-        // cells.push([row - i, column])
-
-        // if (this.didOutflankOpponent(row - i, column)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-
-        // console.warn(`you did not outflank`);
-
-        // i++;
-        // }
-
-        // i = 1;
-        // }
-
-        // // Vertical: Down
-        // if (this.shouldCheckDirection(row + 1, column, this.currentPlayer)) {
-        // cells = [];
-
-        // for (let i = row + 1; i < MAX_ROWS; i++) {
-        // cells.push([i, column]);
-        // if (this.didOutflankOpponent(i, column)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // }
-        // }
-
-        // // Horizontal: Right
-        // if (this.shouldCheckDirection(row, column + 1, this.currentPlayer)) {
-        // cells = [];
-
-        // for (let i = column + 1; i < MAX_COLS; i++) {
-        // cells.push([row, i]);
-        // if (this.didOutflankOpponent(row, i)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // }
-        // }
-
-        // // Vertical: Up
-        // if (this.shouldCheckDirection(row - 1, column, this.currentPlayer)) {
-        // cells = [];
-
-        // for (let i = row - 1; i >= 0; i--) {
-        // cells.push([i, column]);
-        // if (this.didOutflankOpponent(i,column)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // }
-        // }
-
-        // // Horizontal: Left
-        // if (this.shouldCheckDirection(row, column - 1, this.currentPlayer)) {
-        // cells = [];
-
-        // for (let i = column - 1; i >= 0; i--) {
-        // cells.push([row, i]);
-        // if (this.didOutflankOpponent(row,i)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // }
-        // }
-
-        // // Diagonal: down, right
-        // if (this.shouldCheckDirection(row + 1, column + 1, this.currentPlayer)) {
-        // cells = [];
-        // let i = row + 1;
-        // let j = column + 1;
-
-        // while (i < MAX_ROWS && j < MAX_COLS) {
-        // cells.push([i, j]);
-
-        // if (this.didOutflankOpponent(i, j)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // i++;
-        // j++;
-        // }
-        // }
-
-        // // Diagonal: down, left
-        // if (this.shouldCheckDirection(row + 1, column - 1, this.currentPlayer)) {
-        // cells = [];
-        // let i = row + 1;
-        // let j = column - 1;
-
-        // while (i < MAX_ROWS && j >= 0) {
-        // cells.push([i, j]);
-
-        // if (this.didOutflankOpponent(i, j)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // i++;
-        // j--;
-        // }
-        // }
-
-        // // Diagonal: up, left
-        // if (this.shouldCheckDirection(row - 1, column - 1, this.currentPlayer)) {
-        // cells = [];
-        // let i = row - 1;
-        // let j = column - 1;
-
-        // while (i >= 0 && j >= 0) {
-        // cells.push([i, j]);
-
-        // if (this.didOutflankOpponent(i, j)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // i--;
-        // j--;
-        // }
-        // }
-
-        // // Diagonal: up, right
-        // if (this.shouldCheckDirection(row - 1, column + 1, this.currentPlayer)) {
-        // cells = [];
-        // let i = row - 1;
-        // let j = column + 1;
-
-        // while (i >= 0 && j < MAX_COLS) {
-        // cells.push([i, j]);
-
-        // if (this.didOutflankOpponent(i, j)) {
-        // this.flipRow(cells);
-        // cells = [];
-        // validChoice = true;
-        // break;
-        // }
-        // i--;
-        // j++;
-        // }
-        // }
+        })
 
         if (validChoice) {
           this.board[row][column] = this.currentPlayer;
